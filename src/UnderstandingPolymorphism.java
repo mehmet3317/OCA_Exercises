@@ -1,12 +1,39 @@
 public class UnderstandingPolymorphism {
 }
-class Bird {}
-class Fish extends  Bird {
+
+
+ class Primate { public boolean hasHair() {
+    return true;
+} }
+ interface HasTail {
+    public boolean isTailStriped();
+}
+ class Lemur extends Primate implements HasTail {
+    public boolean isTailStriped() {
+    return false; }
+    public int age = 10;
     public static void main(String[] args) {
-        Fish fish = new Fish();
-         Bird bird = (Bird)fish; // DOES NOT COMPILE }
+        Lemur lemur = new Lemur(); System.out.println(lemur.age);
+        HasTail hasTail = lemur; System.out.println(hasTail.isTailStriped());
+      //  Primate primate = lemur; System.out.println(primate.hasHair());
+        Primate primate = lemur;
+       // Lemur lemur2 = primate; // DOES NOT COMPILE
+        Lemur lemur3 = (Lemur)primate; System.out.println(lemur3.age);
     }
 }
+//class Bird {}
+//class Fish extends  Bird {
+//    public static void main(String[] args) {
+//        Fish fish = new Fish();
+//         Bird bird = (Bird)fish; // DOES NOT COMPILE }
+//    }
+//}
+
+
+
+
+
+
 /* Virtual methods
 * public class Bird {
 public String getName() {
